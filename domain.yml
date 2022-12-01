@@ -1,0 +1,51 @@
+version: "3.1"
+
+intents:
+  - Greet
+  - Problem_alert_alter
+  - Problem_alert_slowdown
+  - Problem_alert_unimportant
+  - FoundAlterante
+  - Unimportant
+  - Slowdown
+  - Goodbye
+
+entities:
+  - shipname
+slots:
+  shipname:
+    type: text
+    mappings:
+      - type: custom
+        action: action_get_shipdata
+
+responses:
+  utter_greet:
+  - text: Hello, I read you excellent
+
+  utter_greet1:
+  - text: Hello, what is the situation?
+
+  utter_problemalternate:
+  - text: We are on the same route to same destination. An alternate path is found that will take 2 additional hours to destination
+
+  utter_problemalternate1:
+  - text: We read you. An alternate path has been found
+
+  utter_problemslowdown:
+  - text: Thank you. We cannot alter our route so we will slow down. Keep us updated
+
+  utter_unimportant:
+  - text: We are not in same path. This message is disregarded as it is unimportant to our path
+
+  utter_goodbye:
+  - text: Goodbye
+
+  utter_goodbye1:
+  - text: Goodbye, keep us updated
+
+actions:
+  - action_get_shipdata
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
